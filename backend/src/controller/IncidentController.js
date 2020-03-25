@@ -44,12 +44,12 @@ module.exports = {
     const incidents = await connection('incidents').where('id', id).select('ong_id').first();
 
     if(incidents.ong_id !== ong_id){
-      return res.status(401).json({ error: 'Operation not permited!' });
+      return res.status(401).json({ ong_id });
     }
 
     await connection('incidents').where('id', id).delete();
 
-    return res.status(204).send
+    return res.status(204).send();
 
   }
 }
